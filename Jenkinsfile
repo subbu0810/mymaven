@@ -2,7 +2,7 @@ node('master')
 {
     stage('ContinuousDownload') 
     {
-         git 'https://github.com/venkat9822891/mymaven.git'
+         git 'https://github.com/subbu0810/mymaven.git'
     }
     stage('ContinuousBuild') 
     {
@@ -14,13 +14,13 @@ node('master')
     }
     stage('ContinuousTesting')
     {
-        git 'https://github.com/venkat9822891/Selenium-testcases.git'
+        git 'https://github.com/subbu0810/Selenium-testcases.git'
         sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/ScriptedPipeline/testing.jar'
     }
      stage('ContinuousDelivery')
     {
         input message: 'Waiting for Approval from the DM', submitter: 'Srinivas'
-        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war ubuntu@172.31.13.130:/var/lib/tomcat9/webapps/prodenv.war'
+        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war ubuntu@172.31.33.249:/var/lib/tomcat9/webapps/prodenv.war'
     }
     
     
